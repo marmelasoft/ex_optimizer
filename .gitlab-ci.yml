@@ -1,4 +1,4 @@
-image: elixir:latest
+image: tcitworld/ex_optimizer-ci:latest
 
 stages:
   - check
@@ -6,8 +6,6 @@ stages:
   - deploy
 
 before_script:
-  - mix local.rebar --force
-  - mix local.hex --force
   - mix deps.get
 
 check:
