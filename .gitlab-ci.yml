@@ -22,9 +22,8 @@ mix:
 pages:
   stage: deploy
   script:
-    - mkdir public
     - mix docs
-    - mv doc public
+    - mv doc/ public/
   only:
     - master
   artifacts:
