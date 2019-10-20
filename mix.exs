@@ -18,7 +18,6 @@ defmodule ExOptimizer.MixProject do
       name: "ExOptimizer",
       source_url: "https://framagit.org/tcit/ex_optimizer",
       homepage_url: "https://tcit.frama.io/ex_optimizer",
-      licenses: ["MIT"],
       description: description(),
       docs: [
         # The main page in the docs
@@ -40,6 +39,13 @@ defmodule ExOptimizer.MixProject do
     [
       extra_applications: [:logger]
     ]
+  end
+
+  def package do
+    %{
+      links: %{"Gitlab" => "https://framagit.org/tcit/ex_optimizer"},
+      licenses: ["MIT"]
+    }
   end
 
   # Run "mix help deps" to learn about dependencies.
