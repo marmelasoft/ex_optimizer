@@ -12,23 +12,17 @@ before_script:
 
 check:
   stage: check
-  before_script:
-    - mix deps.get
   script:
     - mix credo -a
     - mix format --check-formatted --dry-run
 
 mix:
   stage: test
-  before_script:
-    - mix deps.get
   script:
     - mix coveralls
 
 pages:
   stage: deploy
-  before_script:
-    - mix deps.get
   script:
     - mkdir public
     - mix docs
