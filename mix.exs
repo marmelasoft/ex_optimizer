@@ -19,6 +19,7 @@ defmodule ExOptimizer.MixProject do
       source_url: "https://framagit.org/tcit/ex_optimizer",
       homepage_url: "https://tcit.frama.io/ex_optimizer",
       description: description(),
+      package: package(),
       docs: [
         # The main page in the docs
         main: "readme",
