@@ -12,13 +12,14 @@ defmodule ExOptimizer.Optimizers.Svgo do
   @behaviour Optimizer
   @mimes ["text/html", "image/svg", "image/svg+xml", "text/plain"]
   @options ["--disable={cleanupIDs,removeViewBox}"]
+  @binary_name "svgo"
 
   @impl Optimizer
   def can_handle(%Image{mime: mime, ext: extension}),
     do: extension == ".svg" && mime in @mimes
 
   @impl Optimizer
-  def binary_name(), do: "svgo"
+  def binary_name(), do: @binary_name
 
   @impl Optimizer
   def extra_args(%Image{path: path} = _image), do: ["--output=#{path}"]

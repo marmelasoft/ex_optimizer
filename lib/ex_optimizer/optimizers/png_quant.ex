@@ -10,12 +10,13 @@ defmodule ExOptimizer.Optimizers.PngQuant do
   @behaviour Optimizer
   @mime "image/png"
   @options ["--force"]
+  @binary_name "pngquant"
 
   @impl Optimizer
   def can_handle(%Image{mime: mime}), do: mime == @mime
 
   @impl Optimizer
-  def binary_name(), do: "pngquant"
+  def binary_name(), do: @binary_name
 
   @impl Optimizer
   def extra_args(%Image{path: path}), do: ["--output=#{path}"]

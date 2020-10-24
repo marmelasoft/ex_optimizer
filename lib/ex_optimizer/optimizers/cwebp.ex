@@ -18,12 +18,13 @@ defmodule ExOptimizer.Optimizers.Cwebp do
   @behaviour Optimizer
   @mime "image/webp"
   @options ["-m", "6", "-pass", "10", "-mt", "-q", "80"]
+  @binary_name "cwebp"
 
   @impl Optimizer
   def can_handle(%Image{mime: mime}), do: mime == @mime
 
   @impl Optimizer
-  def binary_name(), do: "cwebp"
+  def binary_name(), do: @binary_name
 
   @impl Optimizer
   def extra_args(%Image{path: path} = _image), do: ["-o", "#{path}"]

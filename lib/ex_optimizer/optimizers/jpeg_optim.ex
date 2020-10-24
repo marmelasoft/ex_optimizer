@@ -13,12 +13,13 @@ defmodule ExOptimizer.Optimizers.JpegOptim do
   @behaviour Optimizer
   @mime "image/jpeg"
   @options ["-m85", "--strip-all", "--all-progressive"]
+  @binary_name "jpegoptim"
 
   @impl Optimizer
   def can_handle(%Image{mime: mime}), do: mime == @mime
 
   @impl Optimizer
-  def binary_name(), do: "jpegoptim"
+  def binary_name(), do: @binary_name
 
   @impl Optimizer
   def extra_args(%Image{} = _image), do: []

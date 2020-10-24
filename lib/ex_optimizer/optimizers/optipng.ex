@@ -13,12 +13,13 @@ defmodule ExOptimizer.Optimizers.Optipng do
   @behaviour Optimizer
   @mime "image/png"
   @options ["-i0", "-o2", "-quiet"]
+  @binary_name "optipng"
 
   @impl Optimizer
   def can_handle(%Image{mime: mime}), do: mime == @mime
 
   @impl Optimizer
-  def binary_name(), do: "optipng"
+  def binary_name(), do: @binary_name
 
   @impl Optimizer
   def extra_args(%Image{} = _image), do: []

@@ -12,12 +12,13 @@ defmodule ExOptimizer.Optimizers.Gifsicle do
   @behaviour Optimizer
   @mime "image/gif"
   @options ["-b", "-O3"]
+  @binary_name "gifsicle"
 
   @impl Optimizer
   def can_handle(%Image{mime: mime}), do: mime == @mime
 
   @impl Optimizer
-  def binary_name(), do: "gifsicle"
+  def binary_name(), do: @binary_name
 
   @impl Optimizer
   def extra_args(%Image{path: path} = _image), do: ["--output=#{path}"]
