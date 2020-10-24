@@ -56,7 +56,8 @@ defmodule ExOptimizer do
   @spec do_optimize(Image.t(), {atom(), list()}) :: tuple()
   defp do_optimize(%Image{path: path} = image, {optimizer, optimizer_options}) do
     with {:can_handle, true} <- {:can_handle, optimizer.can_handle(image)},
-         {:module_not_found, true} <- {:module_not_found, Code.ensure_compiled?(optimizer)},
+         {:module_not_found, {:module, _module}} <-
+           {:module_not_found, Code.ensure_compiled(optimizer)},
          {:executable_not_found, executable_path} when is_binary(executable_path) <-
            {:executable_not_found, System.find_executable(optimizer.binary_name())},
          args <- optimizer_options ++ optimizer.extra_args(image) ++ [path],
@@ -67,7 +68,7 @@ defmodule ExOptimizer do
       {:can_handle, false} -> {:ignore, :not_applicable}
       {:error_command, res} -> {:error, :command, res}
       {:executable_not_found, nil} -> {:ignore, :executable_not_found}
-      {:module_not_found, false} -> {:error, :module_not_loaded}
+      {:module_not_found, _} -> {:error, :module_not_loaded}
     end
   end
 
