@@ -4,7 +4,7 @@ defmodule ExOptimizer do
   """
 
   alias ExOptimizer.Image
-  alias ExOptimizer.Optimizers.{JpegOptim, Optipng, PngQuant, Gifsicle, Svgo, Cwebp}
+  alias ExOptimizer.Optimizers.{Cwebp, Gifsicle, JpegOptim, Optipng, PngQuant, Svgo}
 
   @default_optimizers [
     JpegOptim,

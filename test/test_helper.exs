@@ -2,7 +2,7 @@ defmodule ExOptimizerTest.TestHelper do
   require Logger
   @temp_dir "test/temp"
 
-  def empty_temp_directory() do
+  def empty_temp_directory do
     with {:ok, files} <- File.ls(@temp_dir) do
       Enum.each(files, fn file ->
         if file != ".gitkeep" do

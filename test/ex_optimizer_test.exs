@@ -1,7 +1,7 @@
 defmodule ExOptimizerTest do
   use ExUnit.Case
   doctest ExOptimizer
-  alias ExOptimizer.Optimizers.{JpegOptim, Optipng, PngQuant, Gifsicle, Svgo, Cwebp}
+  alias ExOptimizer.Optimizers.{Cwebp, Gifsicle, JpegOptim, Optipng, PngQuant, Svgo}
   import ExOptimizerTest.TestHelper
 
   @jpeg_file "image.jpg"

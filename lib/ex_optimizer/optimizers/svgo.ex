@@ -19,11 +19,11 @@ defmodule ExOptimizer.Optimizers.Svgo do
     do: extension == ".svg" && mime in @mimes
 
   @impl Optimizer
-  def binary_name(), do: @binary_name
+  def binary_name, do: @binary_name
 
   @impl Optimizer
   def extra_args(%Image{path: path} = _image), do: ["--output=#{path}"]
 
   @impl Optimizer
-  def options(), do: @options
+  def options, do: @options
 end

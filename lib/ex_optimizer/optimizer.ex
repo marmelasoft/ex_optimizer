@@ -32,11 +32,11 @@ defmodule ExOptimizer.Optimizer do
 
   alias ExOptimizer.Image
 
-  @callback binary_name() :: String.t()
+  @callback binary_name :: String.t()
 
   @callback can_handle(Image.t()) :: boolean
 
   @callback extra_args(Image.t()) :: list(String.t())
 
-  @callback options() :: list(String.t())
+  @callback options :: list(String.t())
 end
