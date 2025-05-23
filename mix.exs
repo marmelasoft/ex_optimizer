@@ -4,7 +4,7 @@ defmodule ExOptimizer.MixProject do
   def project do
     [
       app: :ex_optimizer,
-      version: "0.1.1",
+      version: "0.2.0",
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -55,7 +55,7 @@ defmodule ExOptimizer.MixProject do
       {:file_info, "~> 0.0.4"},
       {:ex_doc, "~> 0.21", only: :dev, runtime: false},
       {:excoveralls, "~> 0.12", only: :test},
-      {:credo, "~> 1.4.1", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.7.0", only: [:dev, :test], runtime: false}
     ]
   end
 end

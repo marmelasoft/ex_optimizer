@@ -38,7 +38,7 @@ defmodule ExOptimizerTest do
             }} = ExOptimizer.optimize(jpeg_temp_file)
 
     assert res =~ "test/temp/image.jpg"
-    assert res =~ "[OK] 547241 --> 483002 bytes (11.74%), optimized.\n"
+    assert res =~ "[OK] 547241 --> 482984 bytes (11.74%), optimized.\n"
     assert_decreased_file_size(jpeg_temp_file, test_file_path(@jpeg_file))
   end
 
@@ -71,7 +71,7 @@ defmodule ExOptimizerTest do
             }} = ExOptimizer.optimize(svg_file)
 
     assert res =~ "\ngraph.svg:\nDone"
-    assert res =~ "24.986 KiB - 23.4% = 19.134 KiB"
+    assert res =~ "24.986 KiB - 25.1% = 18.715 KiB\n"
     assert_decreased_file_size(svg_file, test_file_path(@svg_file))
   end
 
@@ -137,7 +137,7 @@ defmodule ExOptimizerTest do
     assert {:error,
             %{
               Optipng => {:ok, {"", 0}},
-              PngQuant => {:error, :command, {"", 4}}
+              PngQuant => {:error, :command, {"", 1}}
             }} == ExOptimizer.optimize(png_file, optimizers: [Optipng, {PngQuant, ["--speed 3"]}])
 
     assert_decreased_file_size(png_file, test_file_path(@png_file))
