@@ -11,7 +11,6 @@ defmodule ExOptimizer.Optimizers.Svgo do
 
   @behaviour Optimizer
   @mimes ["text/html", "image/svg", "image/svg+xml", "text/plain"]
-  @options ["--disable={cleanupIDs,removeViewBox}"]
   @binary_name "svgo"
 
   @impl Optimizer
@@ -25,5 +24,12 @@ defmodule ExOptimizer.Optimizers.Svgo do
   def extra_args(%Image{path: path} = _image), do: ["--output=#{path}"]
 
   @impl Optimizer
-  def options, do: @options
+  def options do
+    ["--config=#{config_path()}"]
+  end
+
+  defp config_path do
+    Application.get_env(:ex_optimizer, :svgo_config) ||
+      Path.join(:code.priv_dir(:ex_optimizer), "configs/svgo.js")
+  end
 end
